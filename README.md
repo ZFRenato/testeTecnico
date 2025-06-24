@@ -1,8 +1,11 @@
 # API de Agendamento Médico
 
 API desenvolvida em **Node.js** com **TypeScript**, **Serverless Framework** e **AWS Lambda** para gerenciamento de agendamentos médicos.
-Objectivo realizar teste tecnico para vaga DESENVOLVEDOR DE BACK END PLENO da empresa **Leve Saúde**.
-requisitos: `https://succinct-tadpole-fde.notion.site/Teste-T-cnico-13ee9214de4e479b8f6e87752a358078`
+
+### Objectivo
+ teste tecnico para vaga <u>DESENVOLVEDOR DE BACK END PLENO</u> da empresa **Leve Saúde**.
+
+requisitos:  [Link](https://succinct-tadpole-fde.notion.site/Teste-T-cnico-13ee9214de4e479b8f6e87752a358078)
 
 ## 🚀 Tecnologias Utilizadas
 
