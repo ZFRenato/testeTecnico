@@ -1,6 +1,8 @@
 # API de Agendamento Médico
 
 API desenvolvida em **Node.js** com **TypeScript**, **Serverless Framework** e **AWS Lambda** para gerenciamento de agendamentos médicos.
+Objectivo realizar teste tecnico para vaga DESENVOLVEDOR DE BACK END PLENO da empresa **Leve Saúde**.
+requisitos: `https://succinct-tadpole-fde.notion.site/Teste-T-cnico-13ee9214de4e479b8f6e87752a358078`
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -400,20 +402,6 @@ O projeto utiliza as seguintes variáveis de ambiente:
 - Sanitização de dados
 - Headers CORS configurados
 - Tratamento de erros padronizado
-
-## 📊 Monitoramento
-
-- Logs estruturados
-- Tratamento de erros centralizado
-- Métricas AWS CloudWatch
-
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
 
 ## 📄 Licença
 
