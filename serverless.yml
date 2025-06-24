@@ -1,0 +1,81 @@
+service: api-agendamento-medico
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  environment:
+    NODE_ENV: ${self:provider.stage}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: "arn:aws:logs:*:*:*"
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 3000
+    lambdaPort: 3002
+    noPrependStageInUrl: true
+
+functions:
+  buscarAgendas:
+    handler: src/handlers/agenda.handler
+    events:
+      - http:
+          path: /agendas
+          method: get
+          cors: true
+          request:
+            schemas:
+              application/json:
+                type: object
+                properties:
+                  medico: { type: string }
+                  data: { type: string, format: date }
+                required: []
+
+  marcarAgendamento:
+    handler: src/handlers/agendamento.handler
+    events:
+      - http:
+          path: /agendamento
+          method: post
+          cors: true
+          request:
+            schemas:
+              application/json:
+                type: object
+                properties:
+                  agendamento:
+                    type: object
+                    properties:
+                      medico: { type: string }
+                      paciente: { type: string }
+                      data_horario: { type: string, format: date-time }
+                    required: [medico, paciente, data_horario]
+                required: [agendamento]
+
+package:
+  exclude:
+    - node_modules/**
+    - .git/**
+    - .gitignore
+    - README.md
+    - .env
+    - .env.*
+    - coverage/**
+    - .nyc_output/**
+    - .serverless/**
+    - dist/** 
