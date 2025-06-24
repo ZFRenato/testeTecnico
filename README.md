@@ -98,14 +98,18 @@ npm run deploy:prod
 
 Para facilitar os testes da API, foi criada uma collection completa do Postman com todos os endpoints e exemplos de sucesso e falha.
 
+**🔗 Collection Pública:**
+- [API Agendamento Médico - Collection Postman](https://www.postman.com/gold-crater-405622/teste-tecnico/collection/gfonp7z/api-agendamento-mdico)
+
 **📁 Arquivos disponíveis:**
 - `postman_collection.json` - Collection para importar no Postman
 - `POSTMAN_COLLECTION_README.md` - Guia completo de uso da collection
 
 **🚀 Como usar:**
-1. Importe o arquivo `postman_collection.json` no Postman
-2. Configure as variáveis de ambiente (`baseUrl`, `awsUrl`)
-3. Teste todos os cenários incluindo sucesso e falha
+1. **Opção 1**: Clique no link público acima e importe diretamente
+2. **Opção 2**: Importe o arquivo `postman_collection.json` no Postman
+3. Configure as variáveis de ambiente (`baseUrl`, `awsUrl`)
+4. Teste todos os cenários incluindo sucesso e falha
 
 ### Base URL
 - **Local**: `http://localhost:3000`

@@ -2,8 +2,19 @@
 
 Esta collection contém todas as chamadas da API de Agendamento Médico com exemplos de sucesso e falha para facilitar os testes e integração.
 
+## 🔗 Collection Pública
+
+**Link direto para importação:**
+- [API Agendamento Médico - Collection Postman](https://www.postman.com/gold-crater-405622/teste-tecnico/collection/gfonp7z/api-agendamento-mdico)
+
 ## 📋 Como Importar
 
+### Opção 1: Link Público (Recomendado)
+1. **Clique no link público** acima
+2. **Clique em "Fork Collection"** ou "Import"
+3. **A collection será importada** automaticamente
+
+### Opção 2: Arquivo Local
 1. **Abra o Postman**
 2. **Clique em "Import"** (botão no canto superior esquerdo)
 3. **Selecione o arquivo** `postman_collection.json`
