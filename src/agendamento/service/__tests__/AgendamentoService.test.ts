@@ -3,9 +3,13 @@ import { AgendamentoRequest } from '../../../types';
 
 describe('AgendamentoService', () => {
   let agendamentoService: AgendamentoService;
+  let dataFutura: string;
 
   beforeEach(() => {
     agendamentoService = new AgendamentoService();
+    const data = new Date();
+    data.setDate(data.getDate() + 1);
+    dataFutura = data.toISOString().slice(0, 10) + ' 09:00';
   });
 
   describe('criarAgendamento', () => {
@@ -14,7 +18,7 @@ describe('AgendamentoService', () => {
         agendamento: {
           medico: 'Dr. João Silva',
           paciente: 'Carlos Almeida',
-          data_horario: '2024-12-25 09:00',
+          data_horario: dataFutura,
         },
       };
 
@@ -47,9 +51,9 @@ describe('AgendamentoService', () => {
       // Primeiro agendamento
       const dados1: AgendamentoRequest = {
         agendamento: {
-          medico: 'Dr. João Silva',
+          medico: 'Dr. Pedro Lima',
           paciente: 'Carlos Almeida',
-          data_horario: '2024-12-25 09:00',
+          data_horario: dataFutura,
         },
       };
 
@@ -58,9 +62,9 @@ describe('AgendamentoService', () => {
       // Segundo agendamento no mesmo horário
       const dados2: AgendamentoRequest = {
         agendamento: {
-          medico: 'Dr. João Silva',
+          medico: 'Dr. Pedro Lima',
           paciente: 'Maria Silva',
-          data_horario: '2024-12-25 09:00',
+          data_horario: dataFutura,
         },
       };
 

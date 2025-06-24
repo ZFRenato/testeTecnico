@@ -40,6 +40,11 @@ export class AgendamentoService implements IAgendamentoService {
 
       return novoAgendamento;
     } catch (error) {
+      // Se já é um Error, re-throw sem encapsular
+      if (error instanceof Error) {
+        throw error;
+      }
+      // Se não é um Error, encapsular com mensagem genérica
       throw new Error(`Erro ao criar agendamento: ${error}`);
     }
   }
@@ -48,6 +53,9 @@ export class AgendamentoService implements IAgendamentoService {
     try {
       return [...agendamentosMock];
     } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
       throw new Error(`Erro ao buscar agendamentos: ${error}`);
     }
   }
@@ -57,6 +65,9 @@ export class AgendamentoService implements IAgendamentoService {
       const agendamento = agendamentosMock.find((a) => a.id === id);
       return agendamento || null;
     } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
       throw new Error(`Erro ao buscar agendamento por ID: ${error}`);
     }
   }
@@ -71,6 +82,9 @@ export class AgendamentoService implements IAgendamentoService {
       agendamento.status = 'cancelado';
       return true;
     } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
       throw new Error(`Erro ao cancelar agendamento: ${error}`);
     }
   }

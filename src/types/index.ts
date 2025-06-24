@@ -44,7 +44,7 @@ export interface ApiResponse<T> {
   success: boolean;
   data?: T;
   error?: string;
-  message?: string;
+  message?: string | undefined;
 }
 
 export interface LambdaEvent {
@@ -68,4 +68,15 @@ export interface LambdaContext {
   done(error?: Error, result?: any): void;
   fail(error: Error | string): void;
   succeed(message: any): void;
+}
+
+export interface MedicoComHorarios {
+  id: string;
+  nome: string;
+  especialidade: string;
+  horarios_disponiveis: string[];
+}
+
+export interface AgendasResponse {
+  medicos: MedicoComHorarios[];
 } 

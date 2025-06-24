@@ -26,43 +26,43 @@ const horariosOcupados: Horario[] = [
 export const agendasMock: Agenda[] = [
   {
     id: '1',
-    medico: medicosMock[0], // Dr. João Silva
+    medico: medicosMock[0]!, // Dr. João Silva
     data: '2024-10-05',
     horarios: horariosDisponiveis,
   },
   {
     id: '2',
-    medico: medicosMock[0], // Dr. João Silva
+    medico: medicosMock[0]!, // Dr. João Silva
     data: '2024-10-06',
     horarios: horariosOcupados,
   },
   {
     id: '3',
-    medico: medicosMock[1], // Dra. Maria Santos
+    medico: medicosMock[1]!, // Dra. Maria Santos
     data: '2024-10-05',
     horarios: horariosDisponiveis,
   },
   {
     id: '4',
-    medico: medicosMock[1], // Dra. Maria Santos
+    medico: medicosMock[1]!, // Dra. Maria Santos
     data: '2024-10-06',
     horarios: horariosDisponiveis,
   },
   {
     id: '5',
-    medico: medicosMock[2], // Dr. Carlos Oliveira
+    medico: medicosMock[2]!, // Dr. Carlos Oliveira
     data: '2024-10-05',
     horarios: horariosOcupados,
   },
   {
     id: '6',
-    medico: medicosMock[3], // Dra. Ana Costa
+    medico: medicosMock[3]!, // Dra. Ana Costa
     data: '2024-10-05',
     horarios: horariosDisponiveis,
   },
   {
     id: '7',
-    medico: medicosMock[4], // Dr. Pedro Lima
+    medico: medicosMock[4]!, // Dr. Pedro Lima
     data: '2024-10-05',
     horarios: horariosDisponiveis,
   },

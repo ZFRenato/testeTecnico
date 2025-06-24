@@ -6,7 +6,7 @@ import { ValidationUtil } from '../../utils/validation';
 export class AgendamentoController {
   constructor(private agendamentoService: IAgendamentoService) {}
 
-  async handler(event: LambdaEvent, context: LambdaContext) {
+  async handler(event: LambdaEvent, _context: LambdaContext) {
     try {
       // Validar body da requisição
       if (!event.body) {

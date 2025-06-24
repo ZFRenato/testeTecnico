@@ -17,7 +17,7 @@ export const handler = async (
       headers: event.headers || {},
       queryStringParameters: event.queryStringParameters,
       body: event.body,
-    };
+    } as any;
 
     const lambdaContext = {
       functionName: context.functionName,

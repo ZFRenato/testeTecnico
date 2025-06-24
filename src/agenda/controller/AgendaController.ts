@@ -6,7 +6,7 @@ import { ValidationUtil } from '../../utils/validation';
 export class AgendaController {
   constructor(private agendaService: IAgendaService) {}
 
-  async handler(event: LambdaEvent, context: LambdaContext) {
+  async handler(event: LambdaEvent, _context: LambdaContext) {
     try {
       // Validar query parameters
       const queryParams = event.queryStringParameters || {};
@@ -18,8 +18,8 @@ export class AgendaController {
 
       const { medico, data } = validation.value || {};
 
-      // Buscar agendas
-      const agendas = await this.agendaService.buscarAgendas(medico, data);
+      // Buscar agendas no novo formato
+      const agendas = await this.agendaService.buscarAgendasFormatadas(medico, data);
 
       return ResponseUtil.ok(agendas, 'Agendas encontradas com sucesso');
     } catch (error) {

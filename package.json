@@ -1,7 +1,7 @@
 {
   "name": "api-agendamento-medico",
   "version": "1.0.0",
-  "description": "API para agendamento de consultas médicas usando Serverless Framework",
+  "description": "API para agendamento de consultas médicas usando Serverless Framework, teste tecnico",
   "main": "index.js",
   "scripts": {
     "dev": "serverless offline start",
@@ -24,7 +24,7 @@
     "agendamento",
     "medico"
   ],
-  "author": "Desenvolvedor",
+  "author": "Renato Carvalho",
   "license": "MIT",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.119",
