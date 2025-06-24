@@ -94,6 +94,19 @@ npm run deploy:prod
 
 ## 📚 Documentação da API
 
+### Collection Postman
+
+Para facilitar os testes da API, foi criada uma collection completa do Postman com todos os endpoints e exemplos de sucesso e falha.
+
+**📁 Arquivos disponíveis:**
+- `postman_collection.json` - Collection para importar no Postman
+- `POSTMAN_COLLECTION_README.md` - Guia completo de uso da collection
+
+**🚀 Como usar:**
+1. Importe o arquivo `postman_collection.json` no Postman
+2. Configure as variáveis de ambiente (`baseUrl`, `awsUrl`)
+3. Teste todos os cenários incluindo sucesso e falha
+
 ### Base URL
 - **Local**: `http://localhost:3000`
 - **AWS**: `https://[api-id].execute-api.[region].amazonaws.com/dev`
