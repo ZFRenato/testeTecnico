@@ -104,7 +104,7 @@ npm run deploy:prod
 
 **GET** `/agendas`
 
-Retorna uma lista de médicos com suas respectivas agendas e horários disponíveis.
+Retorna uma lista de médicos com suas respectivas agendas e horários disponíveis, agrupados por médico.
 
 **Query Parameters:**
 - `medico` (opcional): Nome do médico para filtrar
@@ -119,33 +119,88 @@ curl -X GET "http://localhost:3000/agendas?medico=Dr. João Silva&data=2024-10-0
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "id": "1",
-      "medico": {
+  "data": {
+    "medicos": [
+      {
         "id": "1",
         "nome": "Dr. João Silva",
         "especialidade": "Cardiologia",
-        "crm": "12345-SP"
+        "horarios_disponiveis": [
+          "2024-10-05 09:00",
+          "2024-10-05 10:00",
+          "2024-10-05 11:00"
+        ]
       },
-      "data": "2024-10-05",
-      "horarios": [
-        {
-          "id": "1",
-          "hora": "08:00",
-          "disponivel": true
-        },
-        {
-          "id": "2",
-          "hora": "09:00",
-          "disponivel": true
-        }
-      ]
-    }
-  ],
+      {
+        "id": "2",
+        "nome": "Dra. Maria Santos",
+        "especialidade": "Dermatologia",
+        "horarios_disponiveis": [
+          "2024-10-06 14:00",
+          "2024-10-06 15:00"
+        ]
+      }
+    ]
+  },
   "message": "Agendas encontradas com sucesso"
 }
 ```
+
+**Resposta sem filtros (todos os médicos):**
+```json
+{
+  "success": true,
+  "data": {
+    "medicos": [
+      {
+        "id": "1",
+        "nome": "Dr. João Silva",
+        "especialidade": "Cardiologia",
+        "horarios_disponiveis": [
+          "2024-10-05 09:00",
+          "2024-10-05 10:00",
+          "2024-10-05 11:00",
+          "2024-10-06 09:00"
+        ]
+      },
+      {
+        "id": "2",
+        "nome": "Dra. Maria Santos",
+        "especialidade": "Dermatologia",
+        "horarios_disponiveis": [
+          "2024-10-05 14:00",
+          "2024-10-05 15:00",
+          "2024-10-06 14:00",
+          "2024-10-06 15:00"
+        ]
+      },
+      {
+        "id": "3",
+        "nome": "Dr. Carlos Oliveira",
+        "especialidade": "Ortopedia",
+        "horarios_disponiveis": [
+          "2024-10-05 16:00",
+          "2024-10-05 17:00"
+        ]
+      }
+    ]
+  },
+  "message": "Agendas encontradas com sucesso"
+}
+```
+
+### Formato de Retorno - GET /agendas
+
+O endpoint `/agendas` foi atualizado para retornar os dados agrupados por médico, facilitando a visualização dos horários disponíveis:
+
+**Estrutura da Resposta:**
+- `medicos`: Array de médicos com seus horários disponíveis
+- Cada médico contém:
+  - `id`: Identificador único do médico
+  - `nome`: Nome completo do médico
+  - `especialidade`: Especialidade médica
+  - `horarios_disponiveis`: Array de horários no formato "YYYY-MM-DD HH:MM"
+
 
 #### 2. Marcar Agendamento do Paciente
 
@@ -211,26 +266,39 @@ src/
 ├── agenda/                    # Domínio de agenda
 │   ├── controller/           # Controllers
 │   ├── service/             # Lógica de negócio
-│   ├── interface/           # Interfaces
+│   ├── interfaces/          # Interfaces
 │   └── mocks/              # Dados mockados
 ├── agendamento/             # Domínio de agendamento
 │   ├── controller/          # Controllers
 │   ├── service/            # Lógica de negócio
-│   ├── interface/          # Interfaces
+│   ├── interfaces/          # Interfaces
 │   └── mocks/             # Dados mockados
 ├── handlers/               # Handlers das funções Lambda
 ├── types/                  # Tipos TypeScript
+│   └── index.ts           # Interfaces e tipos (Medico, Agenda, Agendamento, etc.)
 ├── utils/                  # Utilitários
 │   ├── response.ts        # Padronização de respostas
 │   └── validation.ts      # Validações
 └── __tests__/             # Testes
 ```
 
+### Principais Tipos
+
+- **Medico**: Informações do médico (id, nome, especialidade, crm)
+- **Agenda**: Agenda de um médico em uma data específica
+- **Agendamento**: Agendamento de consulta
+- **MedicoComHorarios**: Médico com lista de horários disponíveis
+- **AgendasResponse**: Resposta do endpoint GET /agendas
+
 ## 🧪 Testes
 
 O projeto inclui testes unitários abrangentes para:
 
 - **AgendaService**: Testes da lógica de negócio de agendas
+  - `buscarAgendas()`: Busca tradicional de agendas
+  - `buscarAgendasFormatadas()`: Novo método que retorna dados agrupados por médico
+  - `buscarAgendaPorId()`: Busca de agenda específica
+  - `verificarDisponibilidade()`: Verificação de disponibilidade de horário
 - **AgendamentoService**: Testes da lógica de negócio de agendamentos
 - **ValidationUtil**: Testes das validações de dados
 
