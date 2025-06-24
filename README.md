@@ -239,12 +239,9 @@ curl -X POST "http://localhost:3000/agendamento" \
   "data": {
     "mensagem": "Agendamento realizado com sucesso",
     "agendamento": {
-      "id": "5",
       "medico": "Dr. João Silva",
       "paciente": "Carlos Almeida",
-      "data_horario": "2024-10-05 09:00",
-      "status": "confirmado",
-      "data_criacao": "2024-09-25T10:30:00.000Z"
+      "data_horario": "2024-10-05 09:00"
     }
   },
   "message": "Agendamento criado com sucesso"
@@ -286,9 +283,11 @@ src/
 
 - **Medico**: Informações do médico (id, nome, especialidade, crm)
 - **Agenda**: Agenda de um médico em uma data específica
-- **Agendamento**: Agendamento de consulta
+- **Agendamento**: Agendamento de consulta completo (com id, status, data_criacao)
+- **AgendamentoSimplificado**: Agendamento simplificado (apenas medico, paciente, data_horario)
 - **MedicoComHorarios**: Médico com lista de horários disponíveis
 - **AgendasResponse**: Resposta do endpoint GET /agendas
+- **AgendamentoResponse**: Resposta do endpoint POST /agendamento
 
 ## 🧪 Testes
 
@@ -300,6 +299,9 @@ O projeto inclui testes unitários abrangentes para:
   - `buscarAgendaPorId()`: Busca de agenda específica
   - `verificarDisponibilidade()`: Verificação de disponibilidade de horário
 - **AgendamentoService**: Testes da lógica de negócio de agendamentos
+- **AgendamentoController**: Testes do controller de agendamentos
+  - Formato de resposta simplificado
+  - Validação de entrada
 - **ValidationUtil**: Testes das validações de dados
 
 ### Executar Testes

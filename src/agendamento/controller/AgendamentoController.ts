@@ -33,12 +33,9 @@ export class AgendamentoController {
       const response: AgendamentoResponse = {
         mensagem: 'Agendamento realizado com sucesso',
         agendamento: {
-          id: agendamento.id,
           medico: agendamento.medico,
           paciente: agendamento.paciente,
           data_horario: agendamento.data_horario,
-          status: agendamento.status,
-          data_criacao: agendamento.data_criacao,
         },
       };
 

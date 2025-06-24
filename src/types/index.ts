@@ -35,9 +35,15 @@ export interface AgendamentoRequest {
   };
 }
 
+export interface AgendamentoSimplificado {
+  medico: string;
+  paciente: string;
+  data_horario: string;
+}
+
 export interface AgendamentoResponse {
   mensagem: string;
-  agendamento: Agendamento;
+  agendamento: AgendamentoSimplificado;
 }
 
 export interface ApiResponse<T> {
